@@ -100,14 +100,14 @@
 
 #todo-list ul li {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   margin: 10px 0;
-  padding: 5px;
+  padding: 5px 5px 5px 0;
   outline: none;
   border: 1px dashed lightgrey;
   border-radius: 5px;
-  color: grey;
+  color: black;
   font-weight: bold;
   background-color: whitesmoke;
   box-shadow: 0 2px 3px 1px lightgrey;
@@ -119,7 +119,15 @@
   color: black;
 }
 
-#todo-list ul li span {
+#todo-list ul li span:first-child {
+  padding: 5px;
+  color: gray;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#todo-list ul li span:last-child {
+  margin-left: auto;
   padding: 8px;
   border: 1px solid red;
   border-radius: 5px;
@@ -133,10 +141,6 @@
 
 #todo-list ul li span:hover {
   background-color: rgba(255, 0, 0, 0.1);
-}
-
-#todo-list ul li span a {
-  cursor: pointer;
 }
 
 /*-------------------------- responsive with Bootstrap 5 breakpoints -------------------------*/

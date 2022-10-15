@@ -55,18 +55,20 @@ class Todo {
 
   renderLi(todo) {
     const li = document.createElement("li");
-    const span = document.createElement("span");
-    const deleteLink = document.createElement("a");
+    const deleterSpan = document.createElement("span");
 
-    deleteLink.addEventListener("click", () => {
+    deleterSpan.addEventListener("click", () => {
       this.deleteTodo(todo);
     });
 
-    deleteLink.innerText = "Delete!";
-    span.append(deleteLink);
+    deleterSpan.innerText = "Delete!";
 
-    li.innerText = todo;
-    li.append(span);
+    li.innerHTML = `
+    <span>${this.todos.indexOf(todo) + 1})</span>
+    <span>${todo}</span>
+    `;
+
+    li.append(deleterSpan);
 
     return li;
   }
@@ -88,6 +90,12 @@ class Todo {
       this.renderUl();
     }
   }
+
+  // counterTodo() {
+  //   for (const key in this.todos) {
+  //     this.todos[key] = `${Number(key) + 1}) ${this.todos[key]}`;
+  //   }
+  // }
 }
 
 new Todo("todo-input", "add-btn", "todo-list");
