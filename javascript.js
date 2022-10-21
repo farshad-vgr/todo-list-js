@@ -1,7 +1,9 @@
 class Todo {
-  constructor(todoInputId, addBtnId, todoListId) {
+  constructor(todoInputId, addBtnId, searchInputId, clearBtnId, todoListId) {
     this.todoInput = document.getElementById(todoInputId);
     this.addBtn = document.getElementById(addBtnId);
+    this.searchInput = document.getElementById(searchInputId);
+    this.clearBtn = document.getElementById(clearBtnId);
     this.todoList = document.getElementById(todoListId);
     this.todos = [];
     this.storage = window.localStorage;
@@ -19,6 +21,12 @@ class Todo {
         ? this.todoInput.classList.remove("checking")
         : this.todoInput.classList.add("checking");
     });
+
+    this.searchInput.addEventListener("input", (event) =>
+      this.searchTodo(event)
+    );
+
+    this.clearBtn.addEventListener("click", () => this.clearTodoList());
 
     this.loadTodo();
 
@@ -64,7 +72,7 @@ class Todo {
     deleterSpan.innerText = "Delete!";
 
     li.innerHTML = `
-    <span>${this.todos.indexOf(todo) + 1})</span>
+    <span>${this.todos.indexOf(todo) + 1}.</span>
     <span>${todo}</span>
     `;
 
@@ -91,11 +99,35 @@ class Todo {
     }
   }
 
-  // counterTodo() {
-  //   for (const key in this.todos) {
-  //     this.todos[key] = `${Number(key) + 1}) ${this.todos[key]}`;
-  //   }
-  // }
+  searchTodo(event) {
+    if (this.todos.length === 0) {
+      return;
+    } else {
+      let arryOfLi = Array.from(document.querySelector("#todo-list ul").children);
+
+      arryOfLi.forEach((li) => {
+        let textOfLi = li.querySelector("span").nextElementSibling.innerText.toLowerCase();
+        let enteredText = event.target.value.toLowerCase().trim();
+        if (textOfLi.includes(enteredText)) {
+          li.style.display = "flex";
+        } else {
+          li.style.display = "none";
+        }
+      });
+    }
+  }
+
+  clearTodoList() {
+    if (this.todos.length === 0) {
+      return;
+    } else {
+      if (confirm(`Are you sure you want to clear list??`)) {
+        this.todos = [];
+        this.saveTodo();
+        this.renderUl();
+      }
+    }
+  }
 }
 
-new Todo("todo-input", "add-btn", "todo-list");
+new Todo("todo-input", "add-btn", "search-input", "clear-btn", "todo-list");
