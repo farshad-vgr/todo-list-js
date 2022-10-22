@@ -4,4 +4,5 @@
 <p>I appreciate it if you contribute to this project and add other options and more themes to this todo list</p>
 <h3>Latest screenshots:</h3>
 <img src="screenshot1.png" alt="Project screenshot"><br>
-<img src="screenshot2.png" alt="Project screenshot">
+<img src="screenshot2.png" alt="Project screenshot"><br>
+<img src="screenshot3.png" alt="Project screenshot">

@@ -103,10 +103,14 @@ class Todo {
     if (this.todos.length === 0) {
       return;
     } else {
-      let arryOfLi = Array.from(document.querySelector("#todo-list ul").children);
+      let arryOfLi = Array.from(
+        document.querySelector("#todo-list ul").children
+      );
 
       arryOfLi.forEach((li) => {
-        let textOfLi = li.querySelector("span").nextElementSibling.innerText.toLowerCase();
+        let textOfLi = li
+          .querySelector("span")
+          .nextElementSibling.innerText.toLowerCase();
         let enteredText = event.target.value.toLowerCase().trim();
         if (textOfLi.includes(enteredText)) {
           li.style.display = "flex";
@@ -131,3 +135,24 @@ class Todo {
 }
 
 new Todo("todo-input", "add-btn", "search-input", "clear-btn", "todo-list");
+
+class Theme {
+  constructor(styleSrcId, themeBtnId) {
+    this.styleSrc = document.getElementById(styleSrcId);
+    this.themeBtn = document.getElementById(themeBtnId);
+
+    this.themeBtn.addEventListener("click", () => this.themeChanger());
+  }
+
+  themeChanger() {
+    if (this.themeBtn.innerText === "Dark mode") {
+      this.themeBtn.innerText = "Light mode";
+      this.styleSrc.setAttribute("href", "styleDarkTheme.css");
+    } else {
+      this.themeBtn.innerText = "Dark mode";
+      this.styleSrc.setAttribute("href", "styleLightTheme.css");
+    }
+  }
+}
+
+new Theme("style-src", "theme");

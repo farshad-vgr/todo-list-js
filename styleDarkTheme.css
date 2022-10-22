@@ -1,0 +1,275 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: default;
+}
+
+body {
+  background-color: rgb(0, 0, 72);
+}
+
+#container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  text-align: center;
+  min-width: 300px;
+  max-width: 90%;
+  height: 80vh;
+  margin: 20px auto;
+  padding: 10px;
+  border: 5px double burlywood;
+  border-radius: 5px;
+  background-color: #141E61;
+}
+
+#container #theme {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 105px;
+  height: 30px;
+  padding: 5px 10px;
+  border: 1px solid burlywood;
+  border-radius: 30px;
+  outline: none;
+  cursor: pointer;
+  color: burlywood;
+  font-size: 16px;
+  box-shadow: 0 0 5px 3px burlywood inset;
+  background-color: navy;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+#container #theme:hover {
+  box-shadow: 0 0 5px 30px burlywood inset;
+  color: navy;
+}
+
+#container h1 {
+  padding: 10px;
+  color: lightgray;
+}
+
+#container #actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  position: relative;
+  margin: 30px auto 20px auto;
+  border: 2px solid burlywood;
+  border-radius: 60px;
+  background-color: #787A91;
+}
+
+#container #todo-input {
+  width: 100%;
+  height: 100%;
+  padding: 5px 50px 5px 10px;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  background-color: transparent;
+  font-size: 20px;
+  color: #EEEEEE;
+}
+
+#container #todo-input::placeholder {
+  color: #EEEEEE;
+}
+
+#container #add-btn {
+  position: absolute;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  margin-right: 3px;
+  text-align: center;
+  outline: none;
+  border: 1px solid rgb(0, 70, 0);
+  border-radius: 40px;
+  box-shadow: 0 0 5px 3px rgb(0, 70, 0) inset;
+  background-color: lightgray;
+  font-size: 30px;
+  color: rgb(0, 70, 0);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+#container #add-btn:hover {
+  box-shadow: 0 0 5px 30px rgb(0, 70, 0) inset;
+  color: whitesmoke;
+}
+
+#container #todo-input.checking:valid {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+#container #todo-input.checking:invalid {
+  background-color: rgba(0, 255, 0, 0.1);
+}
+
+#container #search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  position: relative;
+  margin: 0 auto 20px auto;
+  border: 2px solid burlywood;
+  border-radius: 60px;
+  background-color: white;
+}
+
+#container #search-input {
+  width: 100%;
+  height: 100%;
+  padding: 5px 90px 5px 10px;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  background-color: transparent;
+  font-size: 20px;
+  background-color: #787A91;
+}
+
+#container #search-input::placeholder {
+  color: #EEEEEE;;
+}
+
+#container #clear-btn {
+  position: absolute;
+  right: 0;
+  height: 40px;
+  margin: 5px;
+  margin-right: 3px;
+  padding: 0 10px;
+  text-align: center;
+  outline: none;
+  border: 1px solid rgb(0, 130, 170);
+  border-radius: 40px;
+  box-shadow: 0 0 5px 3px rgb(0, 130, 170) inset;
+  background-color: lightgray;
+  font-size: 15px;
+  color: rgb(0, 130, 170);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+#container #clear-btn:hover {
+  box-shadow: 0 0 5px 30px rgb(0, 130, 170) inset;
+  color: whitesmoke;
+}
+
+#todo-list {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 10px 0 3px;
+  outline: none;
+  border: 2px solid burlywood;
+  border-radius: 8px;
+  overflow: auto;
+}
+
+#todo-list p {
+  margin: 0 auto;
+  line-height: 50px;
+  color: rgb(180, 100, 0);
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+#todo-list ul {
+  list-style: none;
+}
+
+#todo-list ul li {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 10px 0;
+  padding: 5px 5px 5px 0;
+  outline: none;
+  border: 1px dashed whitesmoke;
+  border-radius: 5px;
+  color: black;
+  font-weight: bold;
+  background-color: lightgray;
+  overflow: hidden;
+  text-align: justify;
+}
+
+#todo-list ul li:hover {
+  background-color: rgb(180, 180, 180);
+  color: black;
+}
+
+#todo-list ul li span:nth-child(1) {
+  align-self: flex-start;
+  padding: 5px;
+  padding-top: 0;
+  color: gray;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#todo-list ul li span:nth-child(2) {
+  align-self: flex-start;
+  margin-top: 3px;
+  margin-right: 5px;
+}
+
+#todo-list ul li span:nth-child(3) {
+  align-self: flex-start;
+  margin-left: auto;
+  padding: 8px;
+  border: 1px solid darkred;
+  border-radius: 5px;
+  box-shadow: 0 0 5px 1px darkred inset;
+  color: darkred;
+  background-color: whitesmoke;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+#todo-list ul li span:nth-child(3):hover {
+  box-shadow: 0 0 5px 30px darkred inset;
+  color: whitesmoke;
+}
+
+/*-------------------------- responsive with Bootstrap 5 breakpoints -------------------------*/
+@media (min-width: 576px) {
+  #container {
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 768px) {
+  #container {
+    max-width: 70%;
+  }
+}
+
+@media (min-width: 992px) {
+  #container {
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 1200px) {
+  #container {
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 1400px) {
+}
