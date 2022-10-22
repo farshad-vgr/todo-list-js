@@ -140,18 +140,33 @@ class Theme {
   constructor(styleSrcId, themeBtnId) {
     this.styleSrc = document.getElementById(styleSrcId);
     this.themeBtn = document.getElementById(themeBtnId);
+    this.storage = window.localStorage;
 
-    this.themeBtn.addEventListener("click", () => this.themeChanger());
+    this.themeBtn.addEventListener("click", () =>
+      this.themeChanger(this.themeBtn.innerText)
+    );
+
+    this.loadThemeState();
   }
 
-  themeChanger() {
-    if (this.themeBtn.innerText === "Dark mode") {
+  themeChanger(mode) {
+    if (mode === "Dark mode") {
       this.themeBtn.innerText = "Light mode";
       this.styleSrc.setAttribute("href", "styleDarkTheme.css");
+      this.saveThemeState(mode);
     } else {
       this.themeBtn.innerText = "Dark mode";
       this.styleSrc.setAttribute("href", "styleLightTheme.css");
+      this.saveThemeState(mode);
     }
+  }
+
+  saveThemeState(mode) {
+    this.storage.setItem("theme", mode);
+  }
+
+  loadThemeState() {
+    this.themeChanger(this.storage.getItem("theme"));
   }
 }
 

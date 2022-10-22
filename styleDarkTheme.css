@@ -24,6 +24,7 @@ body {
   border: 5px double burlywood;
   border-radius: 5px;
   background-color: #141E61;
+  overflow: auto;
 }
 
 #container #theme {
@@ -69,7 +70,7 @@ body {
 
 #container #todo-input {
   width: 100%;
-  height: 100%;
+  height: 50px;
   padding: 5px 50px 5px 10px;
   outline: none;
   border: none;
@@ -130,7 +131,7 @@ body {
 
 #container #search-input {
   width: 100%;
-  height: 100%;
+  height: 46px;
   padding: 5px 90px 5px 10px;
   outline: none;
   border: none;
