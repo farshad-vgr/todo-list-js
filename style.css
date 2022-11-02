@@ -5,6 +5,10 @@
   cursor: default;
 }
 
+body.dark-mode {
+  background-color: rgb(0, 0, 70);
+}
+
 #container {
   position: relative;
   display: flex;
@@ -22,8 +26,12 @@
   background-color: beige;
   overflow: auto;
 }
+#container.dark-mode {
+  background-color: #141E61;
+  filter: brightness(0.8) contrast(1.2);
+}
 
-#container #theme {
+#container #theme-btn {
   position: absolute;
   top: 10px;
   right: 10px;
@@ -40,14 +48,28 @@
   background-color: whitesmoke;
   transition: box-shadow 0.2s ease-in-out;
 }
+#container #theme-btn.dark-mode {
+  border: 1px solid burlywood;
+  color: burlywood;
+  box-shadow: 0 0 5px 3px burlywood inset;
+  background-color: navy;
+}
 
-#container #theme:hover {
+#container #theme-btn:hover {
   box-shadow: 0 0 5px 30px darkblue inset;
   color: whitesmoke;
+}
+#container #theme-btn.dark-mode:hover {
+  box-shadow: 0 0 5px 30px burlywood inset;
+  color: navy;
 }
 
 #container h1 {
   padding: 10px;
+}
+#container h1.dark-mode {
+  color: lightgray;
+  filter: brightness(0.8) contrast(1.2);
 }
 
 #container #actions {
@@ -62,6 +84,9 @@
   border-radius: 60px;
   background-color: white;
 }
+#container #actions.dark-mode {
+  background-color: #787A91;
+}
 
 #container #todo-input {
   width: 100%;
@@ -72,6 +97,13 @@
   border-radius: 50px;
   background-color: transparent;
   font-size: 20px;
+}
+#container #todo-input.dark-mode {
+  color: #EEEEEE;
+}
+
+#container #todo-input.dark-mode::placeholder {
+  color: #EEEEEE;
 }
 
 #container #add-btn {
@@ -92,10 +124,19 @@
   cursor: pointer;
   transition: box-shadow 0.2s ease-in-out;
 }
+#container #add-btn.dark-mode {
+  border: 1px solid rgb(0, 70, 0);
+  box-shadow: 0 0 5px 3px rgb(0, 70, 0) inset;
+  background-color: lightgray;
+  color: rgb(0, 70, 0);
+}
 
 #container #add-btn:hover {
   box-shadow: 0 0 5px 30px green inset;
   color: whitesmoke;
+}
+#container #add-btn.dark-mode:hover {
+  box-shadow: 0 0 5px 30px rgb(0, 70, 0) inset;
 }
 
 #container #todo-input.checking:valid {
@@ -129,6 +170,14 @@
   background-color: transparent;
   font-size: 20px;
 }
+#container #search-input.dark-mode {
+  height: 46px;
+  background-color: #787A91;
+}
+
+#container #search-input.dark-mode::placeholder {
+  color: #EEEEEE;;
+}
 
 #container #clear-btn {
   position: absolute;
@@ -148,10 +197,19 @@
   cursor: pointer;
   transition: box-shadow 0.2s ease-in-out;
 }
+#container #clear-btn.dark-mode {
+  border: 1px solid rgb(0, 130, 170);
+  box-shadow: 0 0 5px 3px rgb(0, 130, 170) inset;
+  background-color: lightgray;
+  color: rgb(0, 130, 170);
+}
 
 #container #clear-btn:hover {
   box-shadow: 0 0 5px 30px deepskyblue inset;
   color: whitesmoke;
+}
+#container #clear-btn.dark-mode:hover {
+  box-shadow: 0 0 5px 30px rgb(0, 130, 170) inset;
 }
 
 #todo-list {
@@ -170,6 +228,9 @@
   color: darkorange;
   font-size: 20px;
   font-weight: bolder;
+}
+#todo-list p.dark-mode {
+  color: rgb(180, 100, 0);
 }
 
 #todo-list ul {
@@ -191,11 +252,23 @@
   box-shadow: 0 2px 3px 1px lightgrey;
   overflow: hidden;
   text-align: justify;
+  transition: background-color 0.3s ease-in-out, opacity 0.5s ease-in-out;
+}
+#todo-list ul li.dark-mode {
+  border: 1px dashed whitesmoke;
+  background-color: lightgray;
+  box-shadow: none;
+}
+
+#todo-list ul li.fall, #todo-list ul li.dark-mode.fall {
+  opacity: 0;
 }
 
 #todo-list ul li:hover {
   background-color: lightgrey;
-  color: black;
+}
+#todo-list ul li.dark-mode:hover {
+  background-color: rgb(180, 180, 180);
 }
 
 #todo-list ul li span:nth-child(1) {
@@ -227,11 +300,20 @@
   cursor: pointer;
   transition: box-shadow 0.2s ease-in-out;
 }
+#todo-list ul li span.dark-mode:nth-child(3) {
+  border: 1px solid darkred;
+  box-shadow: 0 0 5px 1px darkred inset;
+  color: darkred;
+}
 
 #todo-list ul li span:nth-child(3):hover {
   box-shadow: 0 0 5px 30px red inset;
   color: whitesmoke;
 }
+#todo-list ul li span:nth-child(3).dark-mode:hover {
+  box-shadow: 0 0 5px 30px darkred inset;
+}
+
 
 /*-------------------------- responsive with Bootstrap 5 breakpoints -------------------------*/
 @media (min-width: 576px) {

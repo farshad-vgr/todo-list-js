@@ -93,9 +93,18 @@ class Todo {
   deleteTodo(todo) {
     if (confirm(`Are you sure you want to delete?? \n    "${todo}"`)) {
       const indexTodo = this.todos.indexOf(todo);
-      this.todos.splice(indexTodo, 1);
-      this.saveTodo();
-      this.renderUl();
+
+      let arryOfLi = Array.from(
+        document.querySelector("#todo-list ul").children
+      );
+
+      arryOfLi[indexTodo].classList.add("fall"); // delete item with animation
+
+      setTimeout(() => {
+        this.todos.splice(indexTodo, 1);
+        this.saveTodo();
+        this.renderUl();
+      }, 500);
     }
   }
 
@@ -137,8 +146,7 @@ class Todo {
 new Todo("todo-input", "add-btn", "search-input", "clear-btn", "todo-list");
 
 class Theme {
-  constructor(styleSrcId, themeBtnId) {
-    this.styleSrc = document.getElementById(styleSrcId);
+  constructor(themeBtnId) {
     this.themeBtn = document.getElementById(themeBtnId);
     this.storage = window.localStorage;
 
@@ -150,14 +158,39 @@ class Theme {
   }
 
   themeChanger(mode) {
+    let themeSensitiveElements = [
+      document.querySelector("body"),
+      document.querySelector("#container"),
+      document.querySelector("#container #theme-btn"),
+      document.querySelector("#container h1"),
+      document.querySelector("#container #actions"),
+      document.querySelector("#container #todo-input"),
+      document.querySelector("#container #add-btn"),
+      document.querySelector("#container #search-input"),
+      document.querySelector("#container #clear-btn"),
+      document.querySelector("#todo-list p"),
+      document.querySelector("#todo-list ul li"),
+      document.querySelector("#todo-list ul li span:nth-child(3)"),
+    ];
+
     if (mode === "Dark mode") {
       this.themeBtn.innerText = "Light mode";
-      this.styleSrc.setAttribute("href", "styleDarkTheme.css");
       this.saveThemeState(mode);
+
+      for (const element of themeSensitiveElements) {
+        if (element !== null) {
+          element.classList.add("dark-mode");
+        }
+      }
     } else {
       this.themeBtn.innerText = "Dark mode";
-      this.styleSrc.setAttribute("href", "styleLightTheme.css");
       this.saveThemeState(mode);
+
+      for (const element of themeSensitiveElements) {
+        if (element !== null) {
+          element.classList.remove("dark-mode");
+        }
+      }
     }
   }
 
@@ -170,4 +203,4 @@ class Theme {
   }
 }
 
-new Theme("style-src", "theme");
+new Theme("theme-btn");
