@@ -1,0 +1,25 @@
+{
+  "name": "todo-list",
+  "version": "1.0.0",
+  "description": "<h3>Hello guys</h3>\r <p>This is a todo list app with some features</p>\r <p>I appreciate it if you contribute to this project and add other options and more themes or colors to this app. Thanx!</p>\r <h3>Latest screenshot:</h3>\r <img src=\"sample.png\" alt=\"Project sample screenshot\" width=\"800\" height=\"350\">",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npx tailwindcss -i ./src/style.css -o ./src/output-mini.css --watch --minify",
+		"minicss": "npx tailwindcss -o output-mini.css --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/farshad-vgr/TODO-List.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/farshad-vgr/TODO-List/issues"
+  },
+  "homepage": "https://github.com/farshad-vgr/TODO-List#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.2.7"
+  }
+}
