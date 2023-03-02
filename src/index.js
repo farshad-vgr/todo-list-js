@@ -1,3 +1,5 @@
+const mb = document.getElementById("main-btn");
+
 class Todo {
 	constructor(todoInputId, addBtnId, searchInputId, clearBtnId, todoListId) {
 		this.todoInput = document.getElementById(todoInputId);
@@ -63,7 +65,11 @@ class Todo {
 			this.deleteTodo(todo);
 		});
 
-		deleterSpan.innerText = "Delete!";
+		deleterSpan.innerHTML = `
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6 cursor-pointer">
+  			<path class="cursor-pointer" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+			</svg>
+		`;
 
 		li.innerHTML = `
     <span>${this.todos.indexOf(todo) + 1}.</span>
@@ -136,57 +142,66 @@ new Todo("todo-input", "add-btn", "search-input", "clear-btn", "todo-list");
 class Theme {
 	constructor(themeBtnId) {
 		this.themeBtn = document.getElementById(themeBtnId);
+
 		this.storage = window.localStorage;
 
-		this.themeBtn.addEventListener("click", () => this.themeChanger(this.themeBtn.innerText));
+		// this.themeBtn.addEventListener("click", () => this.themeChanger(this.themeBtn.innerText));
 
-		this.loadThemeState();
+		// this.loadThemeState();
 	}
 
-	themeChanger(mode) {
-		let themeSensitiveElements = [
-			document.querySelector("body"),
-			document.querySelector("#container"),
-			document.querySelector("#container #theme-btn"),
-			document.querySelector("#container h1"),
-			document.querySelector("#container #actions"),
-			document.querySelector("#container #todo-input"),
-			document.querySelector("#container #add-btn"),
-			document.querySelector("#container #search-input"),
-			document.querySelector("#container #clear-btn"),
-			document.querySelector("#todo-list p"),
-			document.querySelector("#todo-list ul li"),
-			document.querySelector("#todo-list ul li span:nth-child(3)"),
-		];
+	// themeChanger(mode) {
+	// 	let themeSensitiveElements = [
+	// 		document.querySelector("body"),
+	// 		document.querySelector("#container"),
+	// 		document.querySelector("#container #theme-btn"),
+	// 		document.querySelector("#container h1"),
+	// 		document.querySelector("#container #actions"),
+	// 		document.querySelector("#container #todo-input"),
+	// 		document.querySelector("#container #add-btn"),
+	// 		document.querySelector("#container #search-input"),
+	// 		document.querySelector("#container #clear-btn"),
+	// 		document.querySelector("#todo-list p"),
+	// 		document.querySelector("#todo-list ul li"),
+	// 		document.querySelector("#todo-list ul li span:nth-child(3)"),
+	// 	];
 
-		if (mode === "Dark mode") {
-			this.themeBtn.innerText = "Light mode";
-			this.saveThemeState(mode);
+	// 	if (mode === "Dark mode") {
+	// 		this.themeBtn.innerText = "Light mode";
+	// 		this.saveThemeState(mode);
 
-			for (const element of themeSensitiveElements) {
-				if (element !== null) {
-					element.classList.add("dark-mode");
-				}
-			}
-		} else {
-			this.themeBtn.innerText = "Dark mode";
-			this.saveThemeState(mode);
+	// 		for (const element of themeSensitiveElements) {
+	// 			if (element !== null) {
+	// 				element.classList.add("dark-mode");
+	// 			}
+	// 		}
+	// 	} else {
+	// 		this.themeBtn.innerText = "Dark mode";
+	// 		this.saveThemeState(mode);
 
-			for (const element of themeSensitiveElements) {
-				if (element !== null) {
-					element.classList.remove("dark-mode");
-				}
-			}
-		}
-	}
+	// 		for (const element of themeSensitiveElements) {
+	// 			if (element !== null) {
+	// 				element.classList.remove("dark-mode");
+	// 			}
+	// 		}
+	// 	}
+	// }
 
-	saveThemeState(mode) {
-		this.storage.setItem("theme", mode);
-	}
+	// saveThemeState(mode) {
+	// 	this.storage.setItem("theme", mode);
+	// }
 
-	loadThemeState() {
-		this.themeChanger(this.storage.getItem("theme"));
-	}
+	// loadThemeState() {
+	// 	this.themeChanger(this.storage.getItem("theme"));
+	// }
 }
 
 new Theme("theme-btn");
+
+// Heart beat section
+setInterval(() => {
+	mb.classList.add("bg-rose-500");
+	setTimeout(() => {
+		mb.classList.remove("bg-rose-500");
+	}, 150);
+}, 2000);
