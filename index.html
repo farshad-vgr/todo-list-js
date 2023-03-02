@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>TODO List</title>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <main>
+		<meta name="description" content="This is a todo app!!" />
+		<meta name="keywords" content="Todo, Todo List, Todo app" />
+		<meta name="author" content="farshadvaghari@gmail.com" />
 
-        <section id="container">
+		<link rel="icon" href="assets/images/icon.png" type="image/png" />
 
-            <button id="theme-btn">Dark mode</button>
+		<link rel="stylesheet" href="style.css" />
 
-            <h1>TODO List</h1>
+		<title>ToDo List</title>
+	</head>
+	<body>
+		<main>
+			<section id="container">
+				<button id="theme-btn">Dark mode</button>
 
-            <section id="actions">
+				<h1>ToDo List</h1>
 
-                <input id="todo-input" type="text" placeholder="What do you want to do?" pattern="^\s*$">
-                <button id="add-btn">+</button>
+				<section id="actions">
+					<input id="todo-input" type="text" placeholder="What do you want to do?" pattern="^\s*$" />
+					<button id="add-btn">+</button>
+				</section>
 
-            </section>
+				<section id="search">
+					<input id="search-input" type="text" placeholder="Search..." />
+					<button id="clear-btn">Clear list</button>
+				</section>
 
-            <section id="search">
+				<section id="todo-list"></section>
+			</section>
+		</main>
 
-                <input id="search-input" type="text" placeholder="Search...">
-                <button id="clear-btn">Clear list</button>
-
-            </section>
-
-            <section id="todo-list"></section>
-
-        </section>
-
-    </main>
-
-    <script src="javascript.js"></script>
-</body>
+		<script src="index.js"></script>
+	</body>
 </html>

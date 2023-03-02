@@ -1,8 +1,6 @@
-# TODO-List
-<h3>Hello guys, how are you?!?</h3>
-<p>This is a todo list with HTML, CSS and JavaScript!!</p>
-<p>I appreciate it if you contribute to this project and add other options and more themes to this todo list</p>
-<h3>Latest screenshots:</h3>
-<img src="screenshot1.png" alt="Project screenshot"><br>
-<img src="screenshot2.png" alt="Project screenshot"><br>
-<img src="screenshot3.png" alt="Project screenshot">
+# todo-list
+<h3>Hello guys</h3>
+<p>This is a todo list app with some features</p>
+<p>I appreciate it if you contribute to this project and add other options and more themes or colors to this app. Thanx!</p>
+<h3>Latest screenshot:</h3>
+<img src="sample.png" alt="Project sample screenshot" width="800" height="350">
