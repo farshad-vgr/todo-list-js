@@ -67,54 +67,63 @@ class Todo {
 	renderLi(todo) {
 		const li = document.createElement("li");
 
+		// Creating number label and todo text container
 		li.innerHTML = `
     <span>${this.todos.indexOf(todo) + 1}.</span>
     <span>${todo}</span>
     `;
 
-		const deleterSpan = document.createElement("span");
-		deleterSpan.addEventListener("click", () => {
+		// Creating deleting button
+		const deletingSpan = document.createElement("span");
+		deletingSpan.classList.add("option-btn");
+		deletingSpan.addEventListener("click", () => {
 			this.deleteTodo(todo);
 		});
-		deleterSpan.innerHTML = `
+		deletingSpan.innerHTML = `
 			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6 cursor-pointer">
   			<path class="cursor-pointer" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
 			</svg>
 		`;
-		li.append(deleterSpan);
+		li.append(deletingSpan);
 
-		const editerSpan = document.createElement("span");
-		editerSpan.addEventListener("click", () => {
+		// Creating editing button
+		const editingSpan = document.createElement("span");
+		editingSpan.classList.add("option-btn");
+		editingSpan.addEventListener("click", () => {
 			// editing todo text codes here
 		});
-		editerSpan.innerHTML = `
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 cursor-pointer">
+		editingSpan.innerHTML = `
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 cursor-pointer">
   			<path class="cursor-pointer" stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
 			</svg>
 		`;
-		li.append(editerSpan);
+		li.append(editingSpan);
 
-		const completerSpan = document.createElement("span");
-		completerSpan.addEventListener("click", () => {
+		// Creating completing button
+		const completingSpan = document.createElement("span");
+		completingSpan.classList.add("option-btn");
+		completingSpan.addEventListener("click", () => {
 			// compliting todo text codes here
 		});
-		completerSpan.innerHTML = `
+		completingSpan.innerHTML = `
 			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6 cursor-pointer">
   			<path class="cursor-pointer" stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
 			</svg>
 		`;
-		li.append(completerSpan);
+		li.append(completingSpan);
 
-		const sharerSpan = document.createElement("span");
-		sharerSpan.addEventListener("click", () => {
+		// Creating sharing button
+		const sharingSpan = document.createElement("span");
+		sharingSpan.classList.add("option-btn");
+		sharingSpan.addEventListener("click", () => {
 			// sharing todo text codes here
 		});
-		sharerSpan.innerHTML = `
+		sharingSpan.innerHTML = `
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 cursor-pointer">
   			<path class="cursor-pointer" d="M13 4.5a2.5 2.5 0 11.702 1.737L6.97 9.604a2.518 2.518 0 010 .792l6.733 3.367a2.5 2.5 0 11-.671 1.341l-6.733-3.367a2.5 2.5 0 110-3.475l6.733-3.366A2.52 2.52 0 0113 4.5z" />
 			</svg>
 		`;
-		li.append(sharerSpan);
+		li.append(sharingSpan);
 
 		return li;
 	}

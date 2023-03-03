@@ -7,10 +7,6 @@
 	src: url("./assets/fonts/Acme-Regular.ttf");
 }
 
-/* Neumorphism is a design style that involves creating user interface elements with a soft, 
-three-dimensional appearance. It is a combination of the words “new” and “skeuomorphism,” 
-which refers to a design style that imitates the appearance of real-world objects, i.e. 3D objects. */
-
 /* Neumorphism colors and shadows */
 :root {
 	--white: white;
@@ -18,6 +14,7 @@ which refers to a design style that imitates the appearance of real-world object
 	--red: red;
 	--orange: orange;
 	--blue: blue;
+
 	--greyLight-1: #e4ebf5;
 	--greyLight-2: #c8d0e7;
 	--greyLight-3: #bec8e4;
@@ -119,7 +116,7 @@ body {
 	opacity: 0;
 }
 
-/* Number labe */
+/* Number label */
 #todo-list ul li span:nth-child(1) {
 	position: absolute;
 	top: 1rem;
@@ -127,13 +124,13 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 30px;
-	height: 30px;
+	width: 2rem;
+	height: 2rem;
 	outline: none;
 	border: none;
-	border-radius: 15px;
+	border-radius: 1rem;
 	box-shadow: var(--small-outer-shadow);
-	font-size: 20px;
+	font-size: 1.5rem;
 	color: gray;
 	background: none;
 	transition: all 0.2s ease-in-out;
@@ -158,106 +155,60 @@ body {
 	border: 1px dashed gray;
 }
 
-/* Delete button */
-#todo-list ul li span:nth-child(3) {
+/* Option buttons */
+.option-btn {
 	position: absolute;
 	top: 1rem;
-	right: 1rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 30px;
-	height: 30px;
+	width: 2rem;
+	height: 2rem;
 	outline: none;
 	border: none;
-	border-radius: 15px;
+	border-radius: 1rem;
 	box-shadow: var(--small-outer-shadow);
-	font-size: 20px;
-	color: var(--red);
 	background: none;
 	transition: all 0.2s ease-in-out;
 	cursor: pointer;
 }
-#todo-list ul li span:nth-child(3):hover {
-	color: var(--white);
-	background-color: var(--red);
+.option-btn:hover {
+	color: var(--greyLight-1) !important;
 	box-shadow: none;
+}
+
+/* Delete button */
+#todo-list ul li span:nth-child(3) {
+	right: 1rem;
+	color: var(--red);
+}
+#todo-list ul li span:nth-child(3):hover {
+	background-color: var(--red);
 }
 
 /* Edit button */
 #todo-list ul li span:nth-child(4) {
-	position: absolute;
-	top: 1rem;
 	right: 4rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 30px;
-	height: 30px;
-	outline: none;
-	border: none;
-	border-radius: 15px;
-	box-shadow: var(--small-outer-shadow);
-	font-size: 20px;
 	color: var(--orange);
-	background: none;
-	transition: all 0.2s ease-in-out;
-	cursor: pointer;
 }
 #todo-list ul li span:nth-child(4):hover {
-	color: var(--white);
 	background-color: var(--orange);
-	box-shadow: none;
 }
 
 /* Complete button */
 #todo-list ul li span:nth-child(5) {
-	position: absolute;
-	top: 1rem;
 	right: 7rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 30px;
-	height: 30px;
-	outline: none;
-	border: none;
-	border-radius: 15px;
-	box-shadow: var(--small-outer-shadow);
-	font-size: 20px;
 	color: var(--green);
-	background: none;
-	transition: all 0.2s ease-in-out;
-	cursor: pointer;
 }
 #todo-list ul li span:nth-child(5):hover {
-	color: var(--white);
 	background-color: var(--green);
-	box-shadow: none;
 }
 
 /* Share button */
 #todo-list ul li span:nth-child(6) {
-	position: absolute;
-	top: 1rem;
 	right: 10rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 30px;
-	height: 30px;
-	outline: none;
-	border: none;
-	border-radius: 15px;
-	box-shadow: var(--small-outer-shadow);
-	font-size: 20px;
 	color: var(--blue);
-	background: none;
-	transition: all 0.2s ease-in-out;
-	cursor: pointer;
 }
 #todo-list ul li span:nth-child(6):hover {
-	color: var(--white);
 	background-color: var(--blue);
-	box-shadow: none;
 }
