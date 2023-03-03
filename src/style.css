@@ -22,8 +22,11 @@ which refers to a design style that imitates the appearance of real-world object
 	--greyLight-6: #b8b9be;
 
 	--container-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-6), -0.2rem -0.2rem 0.5rem var(--white);
+	--title-shadow: 3px 3px 6px gray, -3px -3px 6px white;
+	--text-shadow: 2px 2px 4px gray, -2px -2px 4px white;
 	--small-outer-shadow: 3px 3px 6px var(--greyLight-6), -3px -3px 6px var(--white);
 	--small-inner-shadow: inset 2px 2px 4px var(--greyLight-6), inset -2px -2px 4px var(--white);
+	--wave-shadow: 0.4rem 0.4rem 0.8rem var(--greyLight-2), -0.4rem -0.4rem 0.8rem var(--white);
 }
 
 * {
@@ -37,9 +40,11 @@ body {
 	font-family: "Acme", sans-serif;
 	letter-spacing: 0.125rem;
 	background: var(--greyLight-1);
+	text-shadow: var(--text-shadow);
 }
 
 #container {
+	padding: 0;
 	box-shadow: var(--container-shadow);
 }
 
@@ -80,14 +85,14 @@ body {
 }
 
 #back-one {
-	box-shadow: 0.4rem 0.4rem 0.8rem var(--greyLight-2), -0.4rem -0.4rem 0.8rem var(--white);
+	box-shadow: var(--wave-shadow);
 	background: linear-gradient(to bottom right, var(--greyLight-2) 0%, var(--white) 100%);
 	animation: waves 4s linear infinite;
 	animation-play-state: running;
 }
 
 #back-two {
-	box-shadow: 0.4rem 0.4rem 0.8rem var(--greyLight-2), -0.4rem -0.4rem 0.8rem var(--white);
+	box-shadow: var(--wave-shadow);
 	animation: waves 4s linear 2s infinite;
 	animation-play-state: running;
 }
@@ -108,15 +113,12 @@ body {
 	}
 }
 
-h1 {
-	text-shadow: 3px 3px 6px gray, -3px -3px 6px white;
-}
-
 #container #actions {
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 0 0.5rem;
 	width: 100%;
 	height: 50px;
 	margin: 30px auto 20px auto;
@@ -139,7 +141,7 @@ h1 {
 
 #container #add-btn {
 	position: absolute;
-	right: 12px;
+	right: 1rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -174,6 +176,7 @@ h1 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 0 0.5rem;
 	width: 100%;
 	height: 50px;
 	margin: 0 auto 20px auto;
@@ -198,7 +201,7 @@ h1 {
 
 #container #clear-btn {
 	position: absolute;
-	right: 12px;
+	right: 1rem;
 	height: 30px;
 	padding: 0 10px;
 	text-align: center;
@@ -220,7 +223,7 @@ h1 {
 #todo-list {
 	width: 100%;
 	min-height: 50px;
-	padding: 0 10px 0 3px;
+	padding: 0 0.5rem;
 	outline: none;
 	border: none;
 	border-radius: 8px;
@@ -238,7 +241,7 @@ h1 {
 
 #todo-list ul {
 	list-style: none;
-	background: transparent;
+	background: none;
 }
 
 #todo-list ul li {
@@ -278,13 +281,14 @@ h1 {
 
 #todo-list ul li span:nth-child(2) {
 	align-self: flex-start;
-	margin-top: 3px;
-	margin-right: 5px;
+	margin-top: 0.25rem;
+	margin-right: 2.5rem;
 }
 
 #todo-list ul li span:nth-child(3) {
 	position: absolute;
-	right: 10px;
+	top: 0.5rem;
+	right: 0.5rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
