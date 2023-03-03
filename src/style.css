@@ -223,12 +223,29 @@ body {
 #todo-list {
 	width: 100%;
 	min-height: 50px;
-	padding: 0 0.5rem;
+	padding: 0 0.5rem 1rem 0.5rem;
 	outline: none;
 	border: none;
 	border-radius: 8px;
 	background: transparent;
-	overflow: auto;
+	overflow-y: auto;
+}
+
+#todo-list::-webkit-scrollbar {
+  width: 0.25rem;
+}
+ 
+#todo-list::-webkit-scrollbar-track {
+	margin-bottom: 3rem;
+	border-radius: 0.25rem;
+  box-shadow: var(--small-inner-shadow);
+}
+ 
+#todo-list::-webkit-scrollbar-thumb {
+	outline: none;
+	border-radius: 0.25rem;
+  background-color: gray;
+	box-shadow: var(--small-outer-shadow);
 }
 
 #todo-list p {
