@@ -1,10 +1,11 @@
-const mb = document.getElementById("main-btn");
+const heartBtn = document.getElementById("heart-btn");
+const emptyMessage = document.getElementById("empty-message");
 
-// Heart beat section
+// Heart-Beat animation button
 setInterval(() => {
-	mb.classList.add("bg-rose-500");
+	heartBtn.classList.add("bg-rose-500");
 	setTimeout(() => {
-		mb.classList.remove("bg-rose-500");
+		heartBtn.classList.remove("bg-rose-500");
 	}, 150);
 }, 2000);
 
@@ -53,9 +54,7 @@ class Todo {
 		this.todoList.innerText = "";
 
 		if (this.todos.length === 0) {
-			const p = document.createElement("p");
-			p.innerText = "TODO List is Empty!";
-			this.todoList.append(p);
+			this.todoList.append(emptyMessage);
 		} else {
 			const ul = document.createElement("ul");
 			for (const todo of this.todos) {
@@ -67,24 +66,55 @@ class Todo {
 
 	renderLi(todo) {
 		const li = document.createElement("li");
-		const deleterSpan = document.createElement("span");
-
-		deleterSpan.addEventListener("click", () => {
-			this.deleteTodo(todo);
-		});
-
-		deleterSpan.innerHTML = `
-			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6 cursor-pointer">
-  			<path class="cursor-pointer" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-			</svg>
-		`;
 
 		li.innerHTML = `
     <span>${this.todos.indexOf(todo) + 1}.</span>
     <span>${todo}</span>
     `;
 
+		const deleterSpan = document.createElement("span");
+		deleterSpan.addEventListener("click", () => {
+			this.deleteTodo(todo);
+		});
+		deleterSpan.innerHTML = `
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6 cursor-pointer">
+  			<path class="cursor-pointer" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+			</svg>
+		`;
 		li.append(deleterSpan);
+
+		const editerSpan = document.createElement("span");
+		editerSpan.addEventListener("click", () => {
+			// editing todo text codes here
+		});
+		editerSpan.innerHTML = `
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 cursor-pointer">
+  			<path class="cursor-pointer" stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+			</svg>
+		`;
+		li.append(editerSpan);
+
+		const completerSpan = document.createElement("span");
+		completerSpan.addEventListener("click", () => {
+			// compliting todo text codes here
+		});
+		completerSpan.innerHTML = `
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6 cursor-pointer">
+  			<path class="cursor-pointer" stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+			</svg>
+		`;
+		li.append(completerSpan);
+
+		const sharerSpan = document.createElement("span");
+		sharerSpan.addEventListener("click", () => {
+			// sharing todo text codes here
+		});
+		sharerSpan.innerHTML = `
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 cursor-pointer">
+  			<path class="cursor-pointer" d="M13 4.5a2.5 2.5 0 11.702 1.737L6.97 9.604a2.518 2.518 0 010 .792l6.733 3.367a2.5 2.5 0 11-.671 1.341l-6.733-3.367a2.5 2.5 0 110-3.475l6.733-3.366A2.52 2.52 0 0113 4.5z" />
+			</svg>
+		`;
+		li.append(sharerSpan);
 
 		return li;
 	}

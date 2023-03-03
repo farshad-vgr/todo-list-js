@@ -16,30 +16,42 @@
 		<title>ToDo List</title>
 	</head>
 	<body class="w-screen h-screen flex justify-center items-center">
-		<main
-			id="container"
-			class="flex flex-col justify-start items-center text-center w-80 sm:w-96 h-4/5 p-2 border-none rounded-[3rem] outline-none overflow-auto">
-			<div id="theme-btn">
-				<span
-					id="main-btn"
-					class="text-rose-600 bg-none hover:text-white hover:bg-rose-600 transition-all duration-300">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 cursor-pointer">
-						<path
-							class="cursor-pointer"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-					</svg>
-				</span>
-				<span id="back-one"></span>
-				<span id="back-two"></span>
-			</div>
+		<!-- Heart-Beat button -->
+		<div class="absolute top-4 left-4 w-12 h-12 grid justify-items-center items-center">
+			<span
+				id="heart-btn"
+				class="[grid-row:_1/2] [grid-column:_1/2] flex justify-center items-center m-2 w-10 h-10 rounded-full text-rose-600 bg-none hover:text-white hover:bg-rose-600 transition-all duration-300 cursor-pointer z-30"
+				title="This is the 'Neumorphism' disign. It is a design style that involves creating user interface elements with a soft, three-dimensional appearance. It is a combination of the words “new” and “skeuomorphism” which refers to a design style that imitates the appearance of real-world objects, i.e. 3D objects.">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="red" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6 cursor-pointer">
+					<path
+						class="cursor-pointer"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+				</svg>
+			</span>
 
+			<span
+				class="[grid-row:_1/2] [grid-column:_1/2] w-6 h-6 rounded-full blur-[0.5px] [background:_var(--wave-bg)] [box-shadow:_var(--wave-shadow)] [animation:_waves_4s_linear_infinite] z-10"></span>
+			<span
+				class="[grid-row:_1/2] [grid-column:_1/2] w-6 h-6 rounded-full blur-[0.5px] [box-shadow:_var(--wave-shadow)] [animation:_waves_4s_linear_2s_infinite] z-10"></span>
+		</div>
+
+		<main
+			class="flex flex-col justify-start items-center text-center p-0 w-80 sm:w-96 h-4/5 border-none rounded-[3rem] outline-none [box-shadow:_var(--container-shadow)] overflow-hidden">
 			<h1 class="pt-4 text-3xl font-bold italic [text-shadow:_var(--title-shadow)]">ToDo List</h1>
 
-			<section id="actions">
-				<input id="todo-input" type="text" placeholder="What do you want to do?" pattern="^\s*$" />
-				<button id="add-btn" class="cursor-pointer">
+			<section class="relative flex justify-center items-center my-6 py-0 px-2 w-full h-12 rounded-[3rem]">
+				<input
+					id="todo-input"
+					class="py-1 pr-12 pl-4 w-full h-12 text-xl tracking-widest outline-none border-none rounded-[3rem] [background:_none] [box-shadow:_var(--small-inner-shadow)] [text-shadow:_var(--text-shadow)] placeholder:[text-shadow:_none] cursor-text"
+					type="text"
+					placeholder="What do you want to do?"
+					pattern="^\s*$" />
+
+				<button
+					id="add-btn"
+					class="absolute right-4 flex justify-center items-center w-8 h-8 outline-none border-none rounded-[2rem] text-sky-500 [background:_none] [box-shadow:_var(--small-outer-shadow)] cursor-pointer hover:[box-shadow:_var(--small-inner-shadow)] hover:brightness-90">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -52,12 +64,25 @@
 				</button>
 			</section>
 
-			<section id="search">
-				<input id="search-input" type="text" placeholder="Search..." />
-				<button id="clear-btn">Clear list</button>
+			<section class="relative flex justify-center items-center mb-6 py-0 px-2 w-full h-12 rounded-[3rem]">
+				<input
+					id="search-input"
+					class="py-1 pr-12 pl-4 w-full h-12 text-xl tracking-widest outline-none border-none rounded-[3rem] [background:_none] [box-shadow:_var(--small-inner-shadow)] [text-shadow:_var(--text-shadow)] placeholder:[text-shadow:_none] cursor-text"
+					type="text"
+					placeholder="Search..." />
+
+				<button
+					id="clear-btn"
+					class="absolute right-4 flex justify-center items-center px-2 w-auto h-8 outline-none border-none rounded-[2rem] text-sky-500 [background:_none] [box-shadow:_var(--small-outer-shadow)] cursor-pointer hover:[box-shadow:_var(--small-inner-shadow)] hover:brightness-90">
+					Clear list
+				</button>
 			</section>
 
-			<section id="todo-list"></section>
+			<section id="todo-list" class="pt-0 pb-4 px-2 w-full [min-height:_3rem] outline-none border-none rounded-lg [background:_none] overflow-y-auto">
+				<p id="empty-message" class="text-2xl font-extrabold text-gray-500 first-letter:text-3xl">
+					ToDo List is Empty <span class="text-3xl">!</span>
+				</p>
+			</section>
 		</main>
 
 		<script src="index.js"></script>
