@@ -103,7 +103,7 @@ class Todo {
 		const completingSpan = document.createElement("span");
 		completingSpan.classList.add("option-btn");
 		completingSpan.addEventListener("click", () => {
-			// compliting todo text codes here
+			this.completedTodo(todo);
 		});
 		completingSpan.innerHTML = `
 			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6 cursor-pointer">
@@ -143,13 +143,41 @@ class Todo {
 
 			let arryOfLi = Array.from(document.querySelector("#todo-list ul").children);
 
-			arryOfLi[indexTodo].classList.add("fall"); // delete item with animation
+			arryOfLi[indexTodo].classList.add("fall"); // Delete item with animation
 
 			setTimeout(() => {
 				this.todos.splice(indexTodo, 1);
 				this.saveTodo();
 				this.renderUl();
 			}, 500);
+		}
+	}
+
+	// This method changes the styles of the disabled todo item
+	completedTodo(todo) {
+		const indexTodo = this.todos.indexOf(todo);
+		const arryOfLi = Array.from(document.querySelector("#todo-list ul").children);
+		const targetLi = arryOfLi[indexTodo];
+		const undoBtn = targetLi.lastElementChild.previousElementSibling;
+
+		targetLi.classList.toggle("line-through"); // Drawing a horizontal line through the text
+		targetLi.classList.toggle("no-hover"); // Disabling hovering on completed item
+		[...targetLi.children].map((element) => element.classList.toggle("disabled")); // Disabling option buttons
+		undoBtn.classList.toggle("enabled"); // Enabling just undo button
+
+		// Changing undo button icon
+		if (targetLi.classList.contains("no-hover")) {
+			undoBtn.innerHTML = `
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6 cursor-pointer">
+  				<path class="cursor-pointer" stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+				</svg>
+			`;
+		} else {
+			undoBtn.innerHTML = `
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6 cursor-pointer">
+  				<path class="cursor-pointer" stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+				</svg>
+			`;
 		}
 	}
 
