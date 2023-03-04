@@ -1,47 +1,51 @@
-const heartBtn = document.getElementById("heart-btn");
-const emptyMessage = document.getElementById("empty-message");
-const modalBackdrop = document.getElementById("modal-backdrop");
-const modalCloseBtn = document.getElementById("modal-close-btn");
-const modalConfirmBtn = document.getElementById("modal-confirm-btn");
-const editInput = document.getElementById("edit-input");
-
-let editedText = "";
-let selectedTodo;
+const hearBeat = document.getElementById("heart-beat");
 
 // Heart-Beat animation button
 setInterval(() => {
-	heartBtn.classList.add("bg-rose-500");
+	hearBeat.classList.add("bg-rose-500");
 	setTimeout(() => {
-		heartBtn.classList.remove("bg-rose-500");
+		hearBeat.classList.remove("bg-rose-500");
 	}, 150);
 }, 2000);
 
-modalBackdrop.addEventListener("click", (e) => {
-	if (e.target === e.currentTarget) {
-		modalBackdrop.classList.replace("bottom-0", "bottom-full"); // Hide modal if click on modal's background
+class Modal {
+	constructor(modalBackdropId, modalCloseBtnId, editInputId, modalConfirmBtnId) {
+		this.modalBackdrop = document.getElementById(modalBackdropId);
+		this.modalCloseBtn = document.getElementById(modalCloseBtnId);
+		this.editInput = document.getElementById(editInputId);
+		this.modalConfirmBtn = document.getElementById(modalConfirmBtnId);
+
+		this.modalBackdrop.addEventListener("click", (e) => {
+			if (e.target === e.currentTarget) {
+				this.modalBackdrop.classList.replace("bottom-0", "bottom-full"); // Hide modal if click on modal's background
+			}
+		});
+
+		this.modalCloseBtn.addEventListener("click", () => {
+			this.modalBackdrop.classList.replace("bottom-0", "bottom-full"); // Hide modal
+		});
+
+		this.editInput.addEventListener("input", (e) => {
+			this.editedText = e.target.value;
+		});
+
+		this.modalConfirmBtn.addEventListener("click", () => {
+			this.selectedTodo.textContent = this.editedText;
+			this.modalBackdrop.classList.replace("bottom-0", "bottom-full"); // Hide modal
+		});
 	}
-});
-
-modalCloseBtn.addEventListener("click", () => {
-	modalBackdrop.classList.replace("bottom-0", "bottom-full"); // Hide modal
-});
-
-editInput.addEventListener("input", (e) => {
-	editedText = e.target.value;
-});
-
-modalConfirmBtn.addEventListener("click", () => {
-	selectedTodo.textContent = editedText;
-	modalBackdrop.classList.replace("bottom-0", "bottom-full"); // Hide modal
-});
+	selectedTodo;
+	editedText = "";
+}
 
 class Todo {
-	constructor(todoInputId, addBtnId, searchInputId, clearBtnId, todoListId) {
+	constructor(todoInputId, addBtnId, searchInputId, clearBtnId, todoListId, emptyMessageId) {
 		this.todoInput = document.getElementById(todoInputId);
 		this.addBtn = document.getElementById(addBtnId);
 		this.searchInput = document.getElementById(searchInputId);
 		this.clearBtn = document.getElementById(clearBtnId);
 		this.todoList = document.getElementById(todoListId);
+		this.emptyMessage = document.getElementById(emptyMessageId);
 		this.todos = [];
 		this.storage = window.localStorage;
 
@@ -62,6 +66,9 @@ class Todo {
 		this.loadTodo();
 
 		this.renderUl();
+
+		// Building a new sample from the Modal class
+		this.modal = new Modal("modal-backdrop", "modal-close-btn", "edit-input", "modal-confirm-btn");
 	}
 
 	// This method creates a todo text from input
@@ -82,7 +89,7 @@ class Todo {
 		this.todoList.innerText = "";
 
 		if (this.todos.length === 0) {
-			this.todoList.append(emptyMessage);
+			this.todoList.append(this.emptyMessage);
 		} else {
 			const ul = document.createElement("ul");
 			for (const todo of this.todos) {
@@ -192,11 +199,11 @@ class Todo {
 		const targetLi = arryOfLi[indexTodo];
 		const targetTodo = targetLi.firstElementChild.nextElementSibling;
 
-		selectedTodo = targetTodo;
+		this.modal.selectedTodo = targetTodo;
 
-		modalBackdrop.classList.replace("bottom-full", "bottom-0"); // Shows modal
+		this.modal.modalBackdrop.classList.replace("bottom-full", "bottom-0"); // Shows modal
 
-		editInput.value = targetTodo.textContent;
+		this.modal.editInput.value = targetTodo.textContent;
 	}
 
 	// This method changes the styles of the disabled todo item
@@ -262,5 +269,5 @@ class Todo {
 	}
 }
 
-// Building a new object from the Todo class
-new Todo("todo-input", "add-btn", "search-input", "clear-btn", "todo-list");
+// Building a new sample from the Todo class
+new Todo("todo-input", "add-btn", "search-input", "clear-btn", "todo-list", "empty-message");
