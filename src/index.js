@@ -116,12 +116,13 @@ class Todo {
 		const sharingSpan = document.createElement("span");
 		sharingSpan.classList.add("option-btn");
 		sharingSpan.addEventListener("click", () => {
-			// sharing todo text codes here
 		});
 		sharingSpan.innerHTML = `
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 cursor-pointer">
-  			<path class="cursor-pointer" d="M13 4.5a2.5 2.5 0 11.702 1.737L6.97 9.604a2.518 2.518 0 010 .792l6.733 3.367a2.5 2.5 0 11-.671 1.341l-6.733-3.367a2.5 2.5 0 110-3.475l6.733-3.366A2.52 2.52 0 0113 4.5z" />
-			</svg>
+			<a href = "mailto:?subject=Sharing my ToDo&body=${todo}" target="_blank">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 cursor-pointer">
+  				<path class="cursor-pointer" d="M13 4.5a2.5 2.5 0 11.702 1.737L6.97 9.604a2.518 2.518 0 010 .792l6.733 3.367a2.5 2.5 0 11-.671 1.341l-6.733-3.367a2.5 2.5 0 110-3.475l6.733-3.366A2.52 2.52 0 0113 4.5z" />
+				</svg>
+			</a>
 		`;
 		li.append(sharingSpan);
 
@@ -137,6 +138,7 @@ class Todo {
 		storagedTodo ? (this.todos = JSON.parse(storagedTodo)) : null;
 	}
 
+	// This method deletes selected todo item
 	deleteTodo(todo) {
 		if (confirm(`Are you sure you want to delete?? \n    "${todo}"`)) {
 			const indexTodo = this.todos.indexOf(todo);
