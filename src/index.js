@@ -1,5 +1,12 @@
 const heartBtn = document.getElementById("heart-btn");
 const emptyMessage = document.getElementById("empty-message");
+const modalBackdrop = document.getElementById("modal-backdrop");
+const modalCloseBtn = document.getElementById("modal-close-btn");
+const modalConfirmBtn = document.getElementById("modal-confirm-btn");
+const editInput = document.getElementById("edit-input");
+
+let editedText = "";
+let selectedTodo;
 
 // Heart-Beat animation button
 setInterval(() => {
@@ -8,6 +15,25 @@ setInterval(() => {
 		heartBtn.classList.remove("bg-rose-500");
 	}, 150);
 }, 2000);
+
+modalBackdrop.addEventListener("click", (e) => {
+	if (e.target === e.currentTarget) {
+		modalBackdrop.classList.replace("bottom-0", "bottom-full"); // Hide modal if click on modal's background
+	}
+});
+
+modalCloseBtn.addEventListener("click", () => {
+	modalBackdrop.classList.replace("bottom-0", "bottom-full"); // Hide modal
+});
+
+editInput.addEventListener("input", (e) => {
+	editedText = e.target.value;
+});
+
+modalConfirmBtn.addEventListener("click", () => {
+	selectedTodo.textContent = editedText;
+	modalBackdrop.classList.replace("bottom-0", "bottom-full"); // Hide modal
+});
 
 class Todo {
 	constructor(todoInputId, addBtnId, searchInputId, clearBtnId, todoListId) {
@@ -93,7 +119,7 @@ class Todo {
 		const editingSpan = document.createElement("span");
 		editingSpan.classList.add("option-btn");
 		editingSpan.addEventListener("click", () => {
-			// editing todo text codes here
+			this.editerTodo(todo);
 		});
 		editingSpan.innerHTML = `
 			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 cursor-pointer">
@@ -147,7 +173,7 @@ class Todo {
 		if (confirm(`Are you sure you want to delete?? \n    "${todo}"`)) {
 			const indexTodo = this.todos.indexOf(todo);
 
-			let arryOfLi = Array.from(document.querySelector("#todo-list ul").children);
+			const arryOfLi = Array.from(document.querySelector("#todo-list ul").children);
 
 			arryOfLi[indexTodo].classList.add("fall"); // Delete item with animation
 
@@ -157,6 +183,20 @@ class Todo {
 				this.renderUl();
 			}, 500);
 		}
+	}
+
+	// This method changes the styles of the disabled todo item
+	editerTodo(todo) {
+		const indexTodo = this.todos.indexOf(todo);
+		const arryOfLi = Array.from(document.querySelector("#todo-list ul").children);
+		const targetLi = arryOfLi[indexTodo];
+		const targetTodo = targetLi.firstElementChild.nextElementSibling;
+
+		selectedTodo = targetTodo;
+
+		modalBackdrop.classList.replace("bottom-full", "bottom-0"); // Shows modal
+
+		editInput.value = targetTodo.textContent;
 	}
 
 	// This method changes the styles of the disabled todo item
