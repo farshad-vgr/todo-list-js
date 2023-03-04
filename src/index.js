@@ -38,6 +38,7 @@ class Todo {
 		this.renderUl();
 	}
 
+	// This method creates a todo text from input
 	addTodo() {
 		const todo = this.todoInput.value;
 
@@ -50,6 +51,7 @@ class Todo {
 		}
 	}
 
+	// This method creates a "ul" element then adds todo items(todo li)
 	renderUl() {
 		this.todoList.innerText = "";
 
@@ -64,6 +66,7 @@ class Todo {
 		}
 	}
 
+	// This method creates a "li" element with 4 option button
 	renderLi(todo) {
 		const li = document.createElement("li");
 
@@ -73,7 +76,7 @@ class Todo {
     <span>${todo}</span>
     `;
 
-		// Creating deleting button
+		// deleting button
 		const deletingSpan = document.createElement("span");
 		deletingSpan.classList.add("option-btn");
 		deletingSpan.addEventListener("click", () => {
@@ -86,7 +89,7 @@ class Todo {
 		`;
 		li.append(deletingSpan);
 
-		// Creating editing button
+		// editing button
 		const editingSpan = document.createElement("span");
 		editingSpan.classList.add("option-btn");
 		editingSpan.addEventListener("click", () => {
@@ -99,7 +102,7 @@ class Todo {
 		`;
 		li.append(editingSpan);
 
-		// Creating completing button
+		// completing button
 		const completingSpan = document.createElement("span");
 		completingSpan.classList.add("option-btn");
 		completingSpan.addEventListener("click", () => {
@@ -112,11 +115,10 @@ class Todo {
 		`;
 		li.append(completingSpan);
 
-		// Creating sharing button
+		// sharing button
 		const sharingSpan = document.createElement("span");
 		sharingSpan.classList.add("option-btn");
-		sharingSpan.addEventListener("click", () => {
-		});
+		sharingSpan.addEventListener("click", () => {});
 		sharingSpan.innerHTML = `
 			<a href = "mailto:?subject=Sharing my ToDo&body=${todo}" target="_blank">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 cursor-pointer">
@@ -129,10 +131,12 @@ class Todo {
 		return li;
 	}
 
+	// This method saves todo items to local storage
 	saveTodo() {
 		this.storage.setItem("todos", JSON.stringify(this.todos));
 	}
 
+	// This method loads todo items from local storage
 	loadTodo() {
 		const storagedTodo = this.storage.getItem("todos");
 		storagedTodo ? (this.todos = JSON.parse(storagedTodo)) : null;
@@ -185,6 +189,7 @@ class Todo {
 		}, 500);
 	}
 
+	// This method searchs todo items from todo list
 	searchTodo(event) {
 		if (this.todos.length === 0) {
 			return;
@@ -203,6 +208,7 @@ class Todo {
 		}
 	}
 
+	// This method clears all todo items from todo list
 	clearTodoList() {
 		if (this.todos.length === 0) {
 			return;
@@ -216,4 +222,5 @@ class Todo {
 	}
 }
 
+// Building a new object from the Todo class
 new Todo("todo-input", "add-btn", "search-input", "clear-btn", "todo-list");
