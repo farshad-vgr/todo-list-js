@@ -73,9 +73,9 @@ class Todo {
 
 	// This method creates a todo text from input
 	addTodo() {
-		const todo = this.todoInput.value;
+		const todo = { text: this.todoInput.value, time: new Date().toLocaleDateString() };
 
-		if (todo.length > 0 && !/^\s*$/.test(todo)) {
+		if (todo.text.length > 0 && !/^\s*$/.test(todo.text)) {
 			this.todos.push(todo);
 			this.todoInput.value = "";
 			this.todoInput.classList.remove("checking");
@@ -106,7 +106,8 @@ class Todo {
 		// Creating number label and todo text container
 		li.innerHTML = `
     <span>${this.todos.indexOf(todo) + 1}.</span>
-    <span>${todo}</span>
+    <span>${todo.time}</span>
+    <span>${todo.text}</span>
     `;
 
 		// deleting button
@@ -153,7 +154,7 @@ class Todo {
 		sharingSpan.classList.add("option-btn");
 		sharingSpan.addEventListener("click", () => {});
 		sharingSpan.innerHTML = `
-			<a href = "mailto:?subject=Sharing my ToDo&body=${todo}" target="_blank">
+			<a href = "mailto:?subject=Sharing my ToDo&body=${todo.text}" target="_blank">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 cursor-pointer">
   				<path class="cursor-pointer" d="M13 4.5a2.5 2.5 0 11.702 1.737L6.97 9.604a2.518 2.518 0 010 .792l6.733 3.367a2.5 2.5 0 11-.671 1.341l-6.733-3.367a2.5 2.5 0 110-3.475l6.733-3.366A2.52 2.52 0 0113 4.5z" />
 				</svg>
@@ -177,7 +178,7 @@ class Todo {
 
 	// This method deletes selected todo item
 	deleteTodo(todo) {
-		if (confirm(`Are you sure you want to delete?? \n    "${todo}"`)) {
+		if (confirm(`Are you sure you want to delete?? \n    "${todo.text}"`)) {
 			const indexTodo = this.todos.indexOf(todo);
 
 			const arryOfLi = Array.from(document.querySelector("#todo-list ul").children);
@@ -197,7 +198,7 @@ class Todo {
 		const indexTodo = this.todos.indexOf(todo);
 		const arryOfLi = Array.from(document.querySelector("#todo-list ul").children);
 		const targetLi = arryOfLi[indexTodo];
-		const targetTodo = targetLi.firstElementChild.nextElementSibling;
+		const targetTodo = targetLi.firstElementChild.nextElementSibling.nextElementSibling;
 
 		this.modal.selectedTodo = targetTodo;
 

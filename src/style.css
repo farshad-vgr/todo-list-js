@@ -136,15 +136,35 @@ body {
 	transition: all 0.2s ease-in-out;
 }
 
-/* Main todo text */
+/* Date label */
 #todo-list ul li span:nth-child(2) {
+	position: absolute;
+	top: 1rem;
+	left: 4rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 0.75rem;
+	height: 2rem;
+	outline: none;
+	border: none;
+	border-radius: 1rem;
+	box-shadow: var(--small-outer-shadow);
+	font-size: 1.25rem;
+	letter-spacing: 0.35rem;
+	color: gray;
+	background: none;
+	transition: all 0.2s ease-in-out;
+}
+
+/* Main todo text */
+#todo-list ul li span:nth-child(3) {
 	display: flex;
 	justify-content: start;
 	margin: 3.5rem 1rem 1rem 1rem;
 	padding-top: 0.5rem;
-	/* text-decoration: none; */
 }
-#todo-list ul li span:nth-child(2)::before {
+#todo-list ul li span:nth-child(3)::before {
 	position: absolute;
 	top: 3.5rem;
 	right: 0;
@@ -179,38 +199,38 @@ body {
 }
 
 /* Delete button */
-#todo-list ul li span:nth-child(3) {
+#todo-list ul li span:nth-child(4) {
 	right: 1rem;
 	color: var(--red);
 }
-#todo-list ul li span:nth-child(3):hover {
+#todo-list ul li span:nth-child(4):hover {
 	background-color: var(--red);
 }
 
 /* Edit button */
-#todo-list ul li span:nth-child(4) {
+#todo-list ul li span:nth-child(5) {
 	right: 4rem;
 	color: var(--orange);
 }
-#todo-list ul li span:nth-child(4):hover {
+#todo-list ul li span:nth-child(5):hover {
 	background-color: var(--orange);
 }
 
 /* Complete button */
-#todo-list ul li span:nth-child(5) {
+#todo-list ul li span:nth-child(6) {
 	right: 7rem;
 	color: var(--green);
 }
-#todo-list ul li span:nth-child(5):hover {
+#todo-list ul li span:nth-child(6):hover {
 	background-color: var(--green);
 }
 
 /* Share button */
-#todo-list ul li span:nth-child(6) {
+#todo-list ul li span:nth-child(7) {
 	right: 10rem;
 	color: var(--blue);
 }
-#todo-list ul li span:nth-child(6):hover {
+#todo-list ul li span:nth-child(7):hover {
 	background-color: var(--blue);
 }
 
