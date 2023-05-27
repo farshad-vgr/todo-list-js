@@ -244,8 +244,9 @@ class Todo {
 		} else {
 			let arryOfLi = Array.from(document.querySelector("#todo-list ul").children);
 
+			
 			arryOfLi.forEach((li) => {
-				let textOfLi = li.querySelector("span").nextElementSibling.innerText.toLowerCase();
+				let textOfLi = li.querySelector("span").nextElementSibling.nextElementSibling.innerText.toLowerCase();
 				let enteredText = event.target.value.toLowerCase().trim();
 				if (textOfLi.includes(enteredText)) {
 					li.style.display = "flex";
